@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class FlowerViewer extends StatelessWidget {
+class ImageViewer extends StatelessWidget {
   final String _image;
 
-  FlowerViewer(this._image);
+  ImageViewer(this._image);
 
   @override
   Widget build(BuildContext context) {

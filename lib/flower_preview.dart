@@ -1,31 +1,28 @@
-import 'package:flora/flower_viewer.dart';
+import 'package:flora/image_viewer.dart';
 import 'package:flutter/material.dart';
 
-class FlowerPreview extends StatelessWidget {
-  String _flowerName;
-  String _flowerDescription;
-  String _flowerImage;
-  ColorSwatch _colorSwatch;
+import 'flower.dart';
 
-  FlowerPreview(this._flowerName, this._flowerDescription, this._flowerImage,
-      this._colorSwatch);
+class FlowerPreview extends StatelessWidget {
+  final Flower _flower;
+  FlowerPreview(this._flower);
 
   @override
   Widget build(BuildContext context) {
-    final imageWidget = FlowerViewer(_flowerImage);
+    final imageWidget = ImageViewer(_flower.image);
     final nameWidget = Text(
-      _flowerName,
+      _flower.name,
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: _colorSwatch['name'],
+        color: _flower.colors['name'],
         fontSize: 24,
       ),
     );
     final descriptionWidget = Text(
-      _flowerDescription,
+      _flower.description,
       textAlign: TextAlign.justify,
       style: TextStyle(
-        color: _colorSwatch['description'],
+        color: _flower.colors['description'],
       ),
     );
 

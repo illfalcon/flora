@@ -1,5 +1,4 @@
-import 'package:flora/flower_preview.dart';
-import 'package:flora/flower_viewer.dart';
+import 'package:flora/menu.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(Flora());
@@ -17,27 +16,7 @@ class Flora extends StatelessWidget {
           textTheme: Theme.of(context).textTheme.apply(
                 bodyColor: Colors.white,
               )),
-      home: MainScreen(),
+      home: Menu(),
     );
-  }
-}
-
-class MainScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    ColorSwatch colors = ColorSwatch(Colors.pink.value, {
-      'name': Colors.pink,
-      'description': Colors.black,
-    });
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Flora",
-          ),
-        ),
-        body: Center(
-          child: FlowerPreview("Some Flower", "Lorem ipsum",
-              "assets/images/flowers/flower.png", colors),
-        ));
   }
 }
