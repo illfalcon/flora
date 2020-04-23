@@ -15,7 +15,7 @@ class FlowerPreview extends StatelessWidget {
       textAlign: TextAlign.center,
       style: TextStyle(
         color: _flower.colors['name'],
-        fontSize: 24,
+        fontSize: 36,
       ),
     );
     final descriptionWidget = Text(
@@ -26,23 +26,31 @@ class FlowerPreview extends StatelessWidget {
       ),
     );
 
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 20,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Flora"),
+        backgroundColor: _flower.colors['main'] ?? Theme.of(context).primaryColor,
       ),
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: imageWidget,
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: 20,
           ),
-          nameWidget,
-          Padding(
-            padding: EdgeInsets.all(5),
-            child: descriptionWidget,
-          )
-        ],
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: imageWidget,
+              ),
+              nameWidget,
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: descriptionWidget,
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

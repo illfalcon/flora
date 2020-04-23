@@ -8,8 +8,8 @@ class ImageViewer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image(
-      height: 200,
-      width: 200,
+      height: 300,
+      width: 300,
       image: AssetImage(_image),
     );
   }

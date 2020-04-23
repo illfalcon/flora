@@ -8,9 +8,11 @@ class Menu extends StatelessWidget {
           "Flower",
           "Some Flower",
           "assets/images/flowers/flower.png",
-          ColorSwatch(Colors.pink.value, {
-            'name': Colors.pink,
+          ColorSwatch(Colors.blue.value, {
+            'name': Colors.blue,
             'description': Colors.black,
+            'light': Colors.blue[50],
+            'main': Colors.blue[300],
           }),
         ),
         Flower(
@@ -20,24 +22,19 @@ class Menu extends StatelessWidget {
           ColorSwatch(Colors.pink.value, {
             'name': Colors.pink,
             'description': Colors.black,
-          }),
-        ),
-        Flower(
-          "Flower",
-          "Some Flower",
-          "assets/images/flowers/flower.png",
-          ColorSwatch(Colors.pink.value, {
-            'name': Colors.pink,
-            'description': Colors.black,
+            'light': Colors.pink[100],
+            'main': Colors.red[300],
           }),
         ),
       ];
 
-  Widget _buildGrid(List<Widget> contents) => GridView.count(
-        crossAxisCount: 2,
-        padding: const EdgeInsets.all(4),
-        children: contents,
-        childAspectRatio: 0.7,
+  Widget _buildGrid(List<Widget> contents) => OrientationBuilder(
+        builder: (context, orientation) => GridView.count(
+          crossAxisCount: orientation == Orientation.portrait ? 2 : 4,
+          padding: const EdgeInsets.all(4),
+          children: contents,
+          childAspectRatio: 0.7,
+        ),
       );
 
   @override

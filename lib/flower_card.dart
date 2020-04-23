@@ -1,3 +1,4 @@
+import 'package:flora/flower_preview.dart';
 import 'package:flutter/material.dart';
 
 import 'flower.dart';
@@ -9,9 +10,10 @@ class FlowerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => FlowerPreview(_flower))),
       child: Card(
-        color: Colors.grey,
+        color: _flower.colors['light'],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -29,12 +31,29 @@ class FlowerCard extends StatelessWidget {
               ),
             ),
             Flexible(
-              flex: 4,
+              flex: 1,
               child: Text(
                 _flower.name,
                 textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: _flower.colors['name'],
+                  fontSize: 20,
+                ),
               ),
-            )
+            ),
+            Flexible(
+              flex: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  _flower.description,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: _flower.colors['description'],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
