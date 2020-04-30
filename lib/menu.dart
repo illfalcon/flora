@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class Menu extends StatelessWidget {
   List<Flower> _getFlowers() => [
         Flower(
-          "Flower",
-          "Some Flower",
+          "Цветочек",
+          "Цветок",
           "assets/images/flowers/flower.png",
           ColorSwatch(Colors.blue.value, {
             'name': Colors.blue,
@@ -16,14 +16,14 @@ class Menu extends StatelessWidget {
           }),
         ),
         Flower(
-          "Flower",
-          "Some Flower",
-          "assets/images/flowers/flower.png",
+          "Тюльпан",
+          "Некий цветок",
+          "assets/images/flowers/tulip.png",
           ColorSwatch(Colors.pink.value, {
             'name': Colors.pink,
             'description': Colors.black,
-            'light': Colors.pink[100],
-            'main': Colors.red[300],
+            'light': Color(0xfff2c9d0),
+            'main': Color(0xffae1f23),
           }),
         ),
       ];
