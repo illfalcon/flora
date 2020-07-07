@@ -10,12 +10,13 @@ class Flora extends StatelessWidget {
     return MaterialApp(
       title: 'Flora',
       theme: ThemeData(
-          primaryColor: Colors.pink,
-          accentColor: Colors.deepPurpleAccent,
-          backgroundColor: Colors.white,
-          textTheme: Theme.of(context).textTheme.apply(
-                bodyColor: Colors.white,
-              )),
+        primaryColor: Colors.pink,
+        accentColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.white,
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.white,
+            ),
+      ),
       home: Menu(),
     );
   }
