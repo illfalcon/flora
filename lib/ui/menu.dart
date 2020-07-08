@@ -1,6 +1,7 @@
 import 'package:flora/database/database_helper.dart';
 import 'package:flora/models/flower.dart';
-import 'package:flora/flower_card.dart';
+import 'package:flora/ui/flower_card.dart';
+import 'package:flora/ui/flower_view.dart';
 import 'package:flutter/material.dart';
 
 class Menu extends StatefulWidget {
@@ -58,6 +59,14 @@ class _MenuState extends State<Menu> {
     });
   }
 
+  void onTap(BuildContext context, Flower f) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => FlowerView(f)));
+    setState(() {
+      f.seen = 1;
+    });
+    db.updateItem(f);
+  }
+
   Widget _buildGrid(List<Widget> contents) => OrientationBuilder(
         builder: (context, orientation) => GridView.count(
           crossAxisCount: orientation == Orientation.portrait ? 2 : 4,
@@ -79,7 +88,7 @@ class _MenuState extends State<Menu> {
           flowers.length,
           (i) => Padding(
             padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            child: FlowerCard(flowers[i]),
+            child: FlowerCard(flowers[i], onTap),
           ),
         ),
       ),

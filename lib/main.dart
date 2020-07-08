@@ -1,4 +1,4 @@
-import 'package:flora/menu.dart';
+import 'package:flora/ui/menu.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(Flora());

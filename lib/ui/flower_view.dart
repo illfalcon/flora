@@ -1,7 +1,7 @@
-import 'package:flora/image_viewer.dart';
+import 'package:flora/ui/image_viewer.dart';
 import 'package:flutter/material.dart';
 
-import 'models/flower.dart';
+import '../models/flower.dart';
 
 class FlowerView extends StatelessWidget {
   final Flower _flower;
