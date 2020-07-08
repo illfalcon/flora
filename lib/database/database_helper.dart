@@ -55,6 +55,15 @@ class DatabaseHelper {
     return [for (var flower in result.toList()) Flower.fromMap(flower)];
   }
 
+  Future<List<Flower>> getAllVisibleFlowers() async {
+    var dbClient = await db;
+    var now = DateTime.now().toIso8601String();
+    var result = await dbClient.rawQuery(
+        "SELECT * FROM ${Constants.TABLE_NAME} WHERE ${Constants.COLUMN_REVEAL_DATE} > '${now}' ORDER BY ${Constants.COLUMN_REVEAL_DATE}");
+
+    return [for (var flower in result.toList()) Flower.fromMap(flower)];
+  }
+
   Future<int> getCount() async {
     var dbClient = await db;
     int count = Sqflite.firstIntValue(await dbClient

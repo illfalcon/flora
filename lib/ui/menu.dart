@@ -30,7 +30,7 @@ class _MenuState extends State<Menu> {
           'light': Colors.blue[50],
           'main': Colors.blue[300],
         }),
-        DateTime(2020, 1, 1, 0, 0, 0, 0).toIso8601String(),
+        DateTime(2020, 7, 1, 0, 0, 0, 0).toIso8601String(),
         0,
       ),
       Flower(
@@ -44,7 +44,7 @@ class _MenuState extends State<Menu> {
           'light': Color(0xfff2c9d0),
           'main': Color(0xffae1f23),
         }),
-        DateTime(2020, 2, 1, 0, 0, 0, 0).toIso8601String(),
+        DateTime(2020, 8, 1, 0, 0, 0, 0).toIso8601String(),
         0,
       ),
     ];
@@ -78,7 +78,7 @@ class _MenuState extends State<Menu> {
 
   @override
   Widget build(BuildContext context) {
-    db.getAllFlowers().then((value) => setState(() => flowers = value));
+    db.getAllVisibleFlowers().then((value) => setState(() => flowers = value));
     return Scaffold(
       appBar: AppBar(
         title: Text("Flora"),
