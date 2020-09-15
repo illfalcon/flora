@@ -59,7 +59,7 @@ class DatabaseHelper {
     var dbClient = await db;
     var now = DateTime.now().toIso8601String();
     var result = await dbClient.rawQuery(
-        "SELECT * FROM ${Constants.TABLE_NAME} WHERE ${Constants.COLUMN_REVEAL_DATE} > '${now}' ORDER BY ${Constants.COLUMN_REVEAL_DATE}");
+        "SELECT * FROM ${Constants.TABLE_NAME} WHERE ${Constants.COLUMN_REVEAL_DATE} < '${now}' ORDER BY ${Constants.COLUMN_REVEAL_DATE}");
 
     return [for (var flower in result.toList()) Flower.fromMap(flower)];
   }

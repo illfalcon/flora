@@ -1,8 +1,15 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flora/database/database_helper.dart';
 import 'package:flora/models/flower.dart';
 import 'package:flora/ui/flower_card.dart';
 import 'package:flora/ui/flower_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -14,37 +21,34 @@ class Menu extends StatefulWidget {
 class _MenuState extends State<Menu> {
   DatabaseHelper db = DatabaseHelper();
   List<Flower> flowers = [];
+  GlobalKey _globalKey = GlobalKey();
+
+  _requestPermission() async {
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.storage,
+    ].request();
+
+    final info = statuses[Permission.storage].toString();
+    print(info);
+  }
 
   @override
   initState() {
     super.initState();
+    _requestPermission();
     List<Flower> flowers = [
       Flower(
         "Цветочек",
         "Цветок",
         "Цветок",
-        "assets/images/flowers/flower.png",
+        "assets/images/flowers/lily.png",
         ColorSwatch(Colors.blue.value, {
-          'name': Colors.blue,
+          'name': Colors.red[800],
           'description': Colors.black,
-          'light': Colors.blue[50],
-          'main': Colors.blue[300],
+          'light': Colors.red[200],
+          'main': Colors.red[900],
         }),
         DateTime(2020, 7, 1, 0, 0, 0, 0).toIso8601String(),
-        0,
-      ),
-      Flower(
-        "Тюльпан",
-        "Твой любимый цветок",
-        "Ты говорила, что тюльпан -- это твой любимый цветок. Он также является и одним из моих любимых. Мне очень нравится наблюдать за тем, как он день ото дня становится всё прекраснее: постепенно раскрывается и обнажает свою красоту, пускает заглянуть вовнутрь, но не сразу, прямо как ты. \n\nНа самом деле, цветы в мировых культурах имели символическое значение, но мы стали забывать этот тайный язык цветов. А мне он кажется очень романтичным. По традиции красный тюльпан обозначает неугасимую страсть и любовь, и также поэтому мне хочется первым отправить тебе этот цветок, чтобы передать те чувства, которые я к тебе испытываю.",
-        "assets/images/flowers/tulip.png",
-        ColorSwatch(Colors.pink.value, {
-          'name': Colors.pink,
-          'description': Colors.black,
-          'light': Color(0xfff2c9d0),
-          'main': Color(0xffae1f23),
-        }),
-        DateTime(2020, 8, 1, 0, 0, 0, 0).toIso8601String(),
         0,
       ),
     ];
@@ -80,18 +84,18 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     db.getAllVisibleFlowers().then((value) => setState(() => flowers = value));
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Flora"),
-      ),
-      body: _buildGrid(
-        List.generate(
-          flowers.length,
-          (i) => Padding(
-            padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            child: FlowerCard(flowers[i], onTap),
+        appBar: AppBar(
+          title: Text("Flora"),
+        ),
+        body: _buildGrid(
+          List.generate(
+            flowers.length,
+            (i) => Padding(
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child: FlowerCard(flowers[i], onTap),
+            ),
           ),
         ),
-      ),
     );
   }
 }
