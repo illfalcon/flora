@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -5,6 +6,8 @@ import 'package:flora/database/database_helper.dart';
 import 'package:flora/models/flower.dart';
 import 'package:flora/ui/flower_card.dart';
 import 'package:flora/ui/flower_view.dart';
+import 'package:flora/ui/login_page.dart';
+import 'package:flora/utils/authentication_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
@@ -12,6 +15,10 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class Menu extends StatefulWidget {
+  final StreamController<AuthenticationState> _streamController;
+
+  Menu(this._streamController);
+
   @override
   State<StatefulWidget> createState() {
     return _MenuState();

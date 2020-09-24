@@ -1,3 +1,4 @@
+import 'package:flora/ui/builder_page.dart';
 import 'package:flora/ui/menu.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class Flora extends StatelessWidget {
               bodyColor: Colors.white,
             ),
       ),
-      home: Menu(),
+      home: BuilderPage(),
     );
   }
 }

@@ -13,4 +13,7 @@ class Constants {
   static final String COLUMN_SEEN = "seen";
   static final int DB_VERSION = 1;
   static final String DBNAME = "flora.db";
+  static final String URL_BASE = "http://35.228.100.93";
+  static final String SERVER_API = "/api/";
+  static final String STORAGE_TOKEN = "token";
 }

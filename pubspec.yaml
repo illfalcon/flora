@@ -28,6 +28,8 @@ dependencies:
   image_gallery_saver: ^1.5.0
   permission_handler: ^5.0.1+1
   esys_flutter_share: ^1.0.2
+  shared_preferences: ^0.5.11
+  http: ^0.12.2
 
 dev_dependencies:
   flutter_test:
