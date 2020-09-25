@@ -11,6 +11,7 @@ class AuthenticationService {
     String url = Constants.URL_BASE + Constants.SERVER_API + 'login';
     Map<String, String> headers = {"Content-type": "application/json"};
     String json = '{"email": "$email", "password": "$password"}';
+    print(json);
     try {
       http.Response response = await http.post(url, headers: headers, body: json);
       int statusCode = response.statusCode;
@@ -21,6 +22,7 @@ class AuthenticationService {
       Map<String, dynamic> map = jsonDecode(body);
       return map['token'];
     } catch (e) {
+      print(e);
       return null;
     }
   }
